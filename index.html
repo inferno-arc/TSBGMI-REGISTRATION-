@@ -1,0 +1,1282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TSBGMI Registration</title>
+
+<style>
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+  font-family:Arial,sans-serif;
+}
+
+body{
+  background:#070a10;
+  color:#fff;
+  min-height:100vh;
+  padding:20px 14px 40px;
+}
+
+.container{
+  max-width:560px;
+  margin:auto;
+}
+
+.hidden{
+  display:none !important;
+}
+
+/* HEADER */
+
+.header{
+  text-align:center;
+  padding:15px 0 25px;
+}
+
+.logo{
+  font-size:36px;
+  font-weight:900;
+  color:#00eaff;
+  letter-spacing:2px;
+}
+
+.header h1{
+  font-size:22px;
+  margin-top:8px;
+}
+
+.header p{
+  color:#9ca3af;
+  margin-top:7px;
+  font-size:13px;
+}
+
+.instagram{
+  display:inline-block;
+  margin-top:12px;
+  color:#00eaff;
+  text-decoration:none;
+  font-weight:bold;
+}
+
+/* CARD */
+
+.card{
+  background:#111722;
+  border:1px solid #273246;
+  border-radius:18px;
+  padding:20px;
+  margin-bottom:15px;
+}
+
+.card h2{
+  color:#00eaff;
+  font-size:19px;
+  margin-bottom:15px;
+}
+
+/* RULES */
+
+.rules{
+  list-style:none;
+}
+
+.rules li{
+  background:#0b1018;
+  border:1px solid #222d3d;
+  padding:13px;
+  border-radius:10px;
+  margin-bottom:9px;
+  line-height:1.45;
+  color:#dbe4ef;
+  font-size:13px;
+}
+
+.rules li strong{
+  color:#00eaff;
+}
+
+.important{
+  border-color:#00eaff !important;
+  background:#07151b !important;
+}
+
+/* AGREEMENT */
+
+.agreement{
+  display:flex;
+  gap:11px;
+  align-items:flex-start;
+  background:#0b1018;
+  border:1px solid #273246;
+  padding:15px;
+  border-radius:11px;
+  margin-top:18px;
+}
+
+.agreement input{
+  width:19px;
+  height:19px;
+  margin-top:2px;
+  flex-shrink:0;
+  accent-color:#00d9ef;
+}
+
+.agreement label{
+  color:#dbe4ef;
+  font-size:13px;
+  line-height:1.5;
+}
+
+/* BUTTON */
+
+.continueBtn{
+  width:100%;
+  padding:15px;
+  margin-top:18px;
+  border:0;
+  border-radius:11px;
+  background:#00d9ef;
+  color:#061016;
+  font-size:16px;
+  font-weight:bold;
+  cursor:pointer;
+}
+
+.continueBtn:disabled{
+  opacity:.4;
+  cursor:not-allowed;
+}
+
+/* FEE */
+
+.fee{
+  display:flex;
+  justify-content:space-between;
+  background:#0b1018;
+  border:1px solid #273246;
+  padding:14px;
+  border-radius:10px;
+  margin-top:10px;
+}
+
+.amount{
+  color:#00eaff;
+  font-weight:bold;
+}
+
+/* REGISTRATION */
+
+.mode{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:10px;
+  margin-bottom:20px;
+}
+
+.mode button{
+  padding:14px;
+  border-radius:11px;
+  border:1px solid #303b4d;
+  background:#171e2b;
+  color:#fff;
+  font-size:15px;
+  cursor:pointer;
+}
+
+.mode button.active{
+  background:#00d9ef;
+  color:#061016;
+  border-color:#00d9ef;
+  font-weight:bold;
+}
+
+label{
+  display:block;
+  color:#cbd5e1;
+  font-size:13px;
+  margin:13px 0 7px;
+}
+
+input[type="text"],
+input[type="tel"]{
+  width:100%;
+  padding:13px;
+  border-radius:10px;
+  border:1px solid #303b4d;
+  background:#090e16;
+  color:#fff;
+  outline:none;
+}
+
+input:focus{
+  border-color:#00eaff;
+}
+
+.player{
+  margin-top:15px;
+  padding:15px;
+  background:#0b1018;
+  border:1px solid #273246;
+  border-radius:13px;
+}
+
+.player-title{
+  color:#00eaff;
+  font-weight:bold;
+  font-size:15px;
+  margin-bottom:10px;
+}
+
+.submit{
+  width:100%;
+  margin-top:22px;
+  padding:15px;
+  border:0;
+  border-radius:11px;
+  background:#00d9ef;
+  color:#061016;
+  font-size:16px;
+  font-weight:bold;
+  cursor:pointer;
+}
+
+.submit:disabled{
+  opacity:.6;
+}
+
+.message{
+  display:none;
+  margin-top:15px;
+  padding:12px;
+  border-radius:10px;
+  text-align:center;
+  font-size:14px;
+}
+
+.success{
+  display:block;
+  background:#063b2a;
+  color:#7fffd4;
+}
+
+.error{
+  display:block;
+  background:#451b1b;
+  color:#ff9b9b;
+}
+
+.note{
+  color:#8d98a8;
+  font-size:12px;
+  line-height:1.5;
+  margin-top:12px;
+  text-align:center;
+}
+
+.footer{
+  text-align:center;
+  color:#6b7280;
+  font-size:12px;
+  margin-top:18px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<!-- =====================================================
+     RULES PAGE — OPENS FIRST
+===================================================== -->
+
+<div id="rulesPage">
+
+  <div class="header">
+
+    <div class="logo">
+      TSBGMI
+    </div>
+
+    <h1>
+      TOURNAMENT RULES
+    </h1>
+
+    <p>
+      BGMI ESPORTS REGISTRATION
+    </p>
+
+    <a
+      class="instagram"
+      href="https://instagram.com/tsbgmiesports"
+      target="_blank">
+      Instagram: @tsbgmiesports
+    </a>
+
+  </div>
+
+
+  <div class="card">
+
+    <h2>💰 Registration Fee</h2>
+
+    <div class="fee">
+      <span>👥 Team Registration</span>
+      <span class="amount">₹90</span>
+    </div>
+
+    <div class="fee">
+      <span>👤 Solo Registration</span>
+      <span class="amount">₹20</span>
+    </div>
+
+  </div>
+
+
+  <div class="card">
+
+    <h2>📜 TSBGMI Rules</h2>
+
+    <ul class="rules">
+
+      <li>
+        🚫 <strong>No Cheats:</strong>
+        Hacks, ESP, aimbot, scripts, mods or unauthorized
+        third-party tools are strictly prohibited.
+      </li>
+
+      <li>
+        🎮 <strong>Registered Players Only:</strong>
+        Only players submitted during registration may
+        participate.
+      </li>
+
+      <li>
+        👥 <strong>No Teaming:</strong>
+        Teaming or intentionally cooperating with another
+        team during a match is prohibited.
+      </li>
+
+      <li>
+        🐛 <strong>No Bug/Glitch Abuse:</strong>
+        Exploiting game bugs or glitches for an unfair
+        advantage is not allowed.
+      </li>
+
+      <li class="important">
+        🔐 <strong>Room ID & Password:</strong>
+        The match Room ID and Password will be provided
+        <strong>15 minutes before the scheduled match</strong>
+        through the official tournament communication channel.
+      </li>
+
+      <li>
+        📱 <strong>Check Official Channel:</strong>
+        Captains should regularly check the official
+        WhatsApp group/channel for announcements.
+      </li>
+
+      <li>
+        ⏰ <strong>Join On Time:</strong>
+        Players should join the room before the scheduled
+        match start time.
+      </li>
+
+      <li>
+        🔒 <strong>Don't Share Room Details:</strong>
+        Room ID and Password should not be unnecessarily
+        shared outside participating players.
+      </li>
+
+      <li>
+        🔄 <strong>No Unauthorized Substitution:</strong>
+        Registered players cannot be replaced without
+        organizer permission.
+      </li>
+
+      <li>
+        📸 <strong>Evidence for Disputes:</strong>
+        Players may be asked to provide screenshots or
+        video evidence when reporting an issue.
+      </li>
+
+      <li>
+        🏆 <strong>Scoring:</strong>
+        Results will follow the official scoring system
+        announced by TSBGMI.
+      </li>
+
+      <li>
+        🚫 <strong>No Unfair Exploitation:</strong>
+        Players cannot intentionally abuse technical
+        issues or game mechanics for an unfair advantage.
+      </li>
+
+      <li>
+        🤝 <strong>Respect Everyone:</strong>
+        Abusive, threatening or disruptive behavior toward
+        players or organizers is not allowed.
+      </li>
+
+      <li>
+        📢 <strong>Official Announcements:</strong>
+        Important updates will be communicated through
+        official TSBGMI channels.
+      </li>
+
+      <li>
+        ⚠️ <strong>Disqualification:</strong>
+        Cheating or serious rule violations can result
+        in disqualification.
+      </li>
+
+      <li>
+        📋 <strong>Organizer Decision:</strong>
+        Organizer decisions regarding rule violations
+        are final.
+      </li>
+
+      <li>
+        📲 <strong>Match Information:</strong>
+        Players are responsible for checking the official
+        communication channel before every match.
+      </li>
+
+      <li>
+        ⏳ <strong>Late Entry:</strong>
+        Players who fail to join the room on time may
+        miss the match.
+      </li>
+
+      <li>
+        🔐 <strong>Account Responsibility:</strong>
+        Players are responsible for their own BGMI
+        accounts, devices and internet connection.
+      </li>
+
+      <li>
+        🛡️ <strong>Fair Play:</strong>
+        All players must maintain fair play and good
+        sportsmanship throughout the tournament.
+      </li>
+
+    </ul>
+
+
+    <div class="agreement">
+
+      <input
+        type="checkbox"
+        id="agree"
+        onchange="checkAgreement()"
+      >
+
+      <label for="agree">
+
+        I have read and understood all the TSBGMI
+        tournament rules. I agree to follow the rules
+        and understand that rule violations may result
+        in disqualification.
+
+      </label>
+
+    </div>
+
+
+    <button
+      id="continueBtn"
+      class="continueBtn"
+      disabled
+      onclick="continueToRegister()">
+
+      CONTINUE TO REGISTRATION
+
+    </button>
+
+    <p class="note">
+      You must agree to the rules before continuing.
+    </p>
+
+  </div>
+
+</div>
+
+
+<!-- =====================================================
+     REGISTRATION PAGE
+===================================================== -->
+
+<div id="registrationPage" class="hidden">
+
+<div class="header">
+
+  <div class="logo">TSBGMI</div>
+
+  <h1>REGISTRATION FORM</h1>
+
+  <p>BGMI ESPORTS TOURNAMENT</p>
+
+  <a
+    class="instagram"
+    href="https://instagram.com/tsbgmiesports"
+    target="_blank">
+    Instagram: @tsbgmiesports
+  </a>
+
+</div>
+
+
+<div class="card">
+
+<h2>Registration Type</h2>
+
+<div class="mode">
+
+  <button
+    id="teamBtn"
+    class="active"
+    type="button"
+    onclick="selectMode('team')">
+
+    👥 TEAM
+
+  </button>
+
+  <button
+    id="soloBtn"
+    type="button"
+    onclick="selectMode('solo')">
+
+    👤 SOLO
+
+  </button>
+
+</div>
+
+
+<form id="registrationForm">
+
+<input
+  type="hidden"
+  id="registrationType"
+  value="team"
+>
+
+
+<!-- TEAM -->
+
+<div id="teamFields">
+
+<label>Team Name</label>
+
+<input
+  id="teamName"
+  type="text"
+  placeholder="Enter team name"
+  required
+>
+
+
+<label>Captain Name</label>
+
+<input
+  id="captainName"
+  type="text"
+  placeholder="Enter captain name"
+  required
+>
+
+
+<!-- PLAYER 1 -->
+
+<div class="player">
+
+<div class="player-title">
+PLAYER 1
+</div>
+
+<label>Player Name</label>
+
+<input
+  id="player1Name"
+  type="text"
+  placeholder="Enter player 1 name"
+  required
+>
+
+<label>BGMI UID</label>
+
+<input
+  id="player1Uid"
+  type="text"
+  placeholder="Enter player 1 BGMI UID"
+  required
+>
+
+<label>In-Game Name</label>
+
+<input
+  id="player1Ign"
+  type="text"
+  placeholder="Enter player 1 IGN"
+  required
+>
+
+</div>
+
+
+<!-- PLAYER 2 -->
+
+<div class="player">
+
+<div class="player-title">
+PLAYER 2
+</div>
+
+<label>Player Name</label>
+
+<input
+  id="player2Name"
+  type="text"
+  placeholder="Enter player 2 name"
+  required
+>
+
+<label>BGMI UID</label>
+
+<input
+  id="player2Uid"
+  type="text"
+  placeholder="Enter player 2 BGMI UID"
+  required
+>
+
+<label>In-Game Name</label>
+
+<input
+  id="player2Ign"
+  type="text"
+  placeholder="Enter player 2 IGN"
+  required
+>
+
+</div>
+
+
+<!-- PLAYER 3 -->
+
+<div class="player">
+
+<div class="player-title">
+PLAYER 3
+</div>
+
+<label>Player Name</label>
+
+<input
+  id="player3Name"
+  type="text"
+  placeholder="Enter player 3 name"
+  required
+>
+
+<label>BGMI UID</label>
+
+<input
+  id="player3Uid"
+  type="text"
+  placeholder="Enter player 3 BGMI UID"
+  required
+>
+
+<label>In-Game Name</label>
+
+<input
+  id="player3Ign"
+  type="text"
+  placeholder="Enter player 3 IGN"
+  required
+>
+
+</div>
+
+
+<!-- PLAYER 4 -->
+
+<div class="player">
+
+<div class="player-title">
+PLAYER 4
+</div>
+
+<label>Player Name</label>
+
+<input
+  id="player4Name"
+  type="text"
+  placeholder="Enter player 4 name"
+  required
+>
+
+<label>BGMI UID</label>
+
+<input
+  id="player4Uid"
+  type="text"
+  placeholder="Enter player 4 BGMI UID"
+  required
+>
+
+<label>In-Game Name</label>
+
+<input
+  id="player4Ign"
+  type="text"
+  placeholder="Enter player 4 IGN"
+  required
+>
+
+</div>
+
+</div>
+
+
+<!-- SOLO -->
+
+<div id="soloFields" class="hidden">
+
+<div class="player">
+
+<div class="player-title">
+SOLO PLAYER
+</div>
+
+<label>Player Name</label>
+
+<input
+  id="soloName"
+  type="text"
+  placeholder="Enter your name"
+>
+
+<label>BGMI UID</label>
+
+<input
+  id="soloUid"
+  type="text"
+  placeholder="Enter your BGMI UID"
+>
+
+<label>In-Game Name</label>
+
+<input
+  id="soloIgn"
+  type="text"
+  placeholder="Enter your IGN"
+>
+
+</div>
+
+</div>
+
+
+<!-- CONTACT -->
+
+<label>
+WhatsApp / Contact Number
+</label>
+
+<input
+  id="phone"
+  type="tel"
+  placeholder="Enter contact number"
+  required
+>
+
+
+<button
+  id="submitBtn"
+  class="submit"
+  type="submit">
+
+CONTINUE TO PAYMENT
+
+</button>
+
+
+<div
+  id="message"
+  class="message">
+</div>
+
+</form>
+
+</div>
+
+
+<div class="footer">
+© 2026 TSBGMI Esports
+</div>
+
+</div>
+
+</div>
+
+
+<script type="module">
+
+import { initializeApp }
+from "https://www.gstatic.com/firebasejs/12.1.0/firebase-app.js";
+
+import {
+  getDatabase,
+  ref,
+  push,
+  set
+}
+from "https://www.gstatic.com/firebasejs/12.1.0/firebase-database.js";
+
+
+/* ==========================
+   RULES
+========================== */
+
+window.checkAgreement = function(){
+
+  const checkbox =
+    document.getElementById("agree");
+
+  const button =
+    document.getElementById("continueBtn");
+
+  button.disabled =
+    !checkbox.checked;
+
+};
+
+
+window.continueToRegister = function(){
+
+  const checkbox =
+    document.getElementById("agree");
+
+  if(!checkbox.checked){
+
+    alert(
+      "Please agree to the tournament rules first."
+    );
+
+    return;
+
+  }
+
+  document
+    .getElementById("rulesPage")
+    .classList.add("hidden");
+
+  document
+    .getElementById("registrationPage")
+    .classList.remove("hidden");
+
+  window.scrollTo(0,0);
+
+};
+
+
+/* ==========================
+   FIREBASE
+========================== */
+
+const firebaseConfig = {
+
+  apiKey:
+  "AIzaSyDGu444d8XJQ27cZzh3rIYH3RtaJk3W0SM",
+
+  authDomain:
+  "tabgmi.firebaseapp.com",
+
+  databaseURL:
+  "https://tabgmi-default-rtdb.firebaseio.com",
+
+  projectId:
+  "tabgmi",
+
+  storageBucket:
+  "tabgmi.firebasestorage.app",
+
+  messagingSenderId:
+  "152073037485",
+
+  appId:
+  "1:152073037485:web:2172a74775e097eacb0824",
+
+  measurementId:
+  "G-22MSXBXJZD"
+};
+
+
+const app =
+  initializeApp(firebaseConfig);
+
+const database =
+  getDatabase(app);
+
+
+/* ==========================
+   TEAM / SOLO
+========================== */
+
+window.selectMode = function(mode){
+
+  const teamBtn =
+    document.getElementById("teamBtn");
+
+  const soloBtn =
+    document.getElementById("soloBtn");
+
+  const teamFields =
+    document.getElementById("teamFields");
+
+  const soloFields =
+    document.getElementById("soloFields");
+
+  document.getElementById(
+    "registrationType"
+  ).value = mode;
+
+
+  if(mode === "team"){
+
+    teamBtn.classList.add("active");
+
+    soloBtn.classList.remove("active");
+
+    teamFields.classList.remove("hidden");
+
+    soloFields.classList.add("hidden");
+
+    setTeamRequired(true);
+
+  }else{
+
+    soloBtn.classList.add("active");
+
+    teamBtn.classList.remove("active");
+
+    teamFields.classList.add("hidden");
+
+    soloFields.classList.remove("hidden");
+
+    setTeamRequired(false);
+
+  }
+
+};
+
+
+/* ==========================
+   REQUIRED FIELDS
+========================== */
+
+function setTeamRequired(value){
+
+  const teamIds = [
+
+    "teamName",
+    "captainName",
+
+    "player1Name",
+    "player1Uid",
+    "player1Ign",
+
+    "player2Name",
+    "player2Uid",
+    "player2Ign",
+
+    "player3Name",
+    "player3Uid",
+    "player3Ign",
+
+    "player4Name",
+    "player4Uid",
+    "player4Ign"
+
+  ];
+
+
+  teamIds.forEach(id => {
+
+    document.getElementById(id)
+      .required = value;
+
+  });
+
+
+  const soloIds = [
+
+    "soloName",
+    "soloUid",
+    "soloIgn"
+
+  ];
+
+
+  soloIds.forEach(id => {
+
+    document.getElementById(id)
+      .required = !value;
+
+  });
+
+}
+
+
+/* ==========================
+   FORM SUBMIT
+========================== */
+
+document
+.getElementById("registrationForm")
+.addEventListener(
+"submit",
+async function(e){
+
+  e.preventDefault();
+
+
+  const type =
+    document.getElementById(
+      "registrationType"
+    ).value;
+
+
+  const button =
+    document.getElementById(
+      "submitBtn"
+    );
+
+  const message =
+    document.getElementById(
+      "message"
+    );
+
+
+  button.disabled = true;
+
+  button.textContent =
+    "SAVING REGISTRATION...";
+
+
+  try{
+
+    let data;
+
+
+    /* TEAM */
+
+    if(type === "team"){
+
+      data = {
+
+        registrationType:
+          "Team",
+
+        teamName:
+          document.getElementById(
+            "teamName"
+          ).value.trim(),
+
+        captainName:
+          document.getElementById(
+            "captainName"
+          ).value.trim(),
+
+
+        player1: {
+
+          name:
+            document.getElementById(
+              "player1Name"
+            ).value.trim(),
+
+          uid:
+            document.getElementById(
+              "player1Uid"
+            ).value.trim(),
+
+          ign:
+            document.getElementById(
+              "player1Ign"
+            ).value.trim()
+
+        },
+
+
+        player2: {
+
+          name:
+            document.getElementById(
+              "player2Name"
+            ).value.trim(),
+
+          uid:
+            document.getElementById(
+              "player2Uid"
+            ).value.trim(),
+
+          ign:
+            document.getElementById(
+              "player2Ign"
+            ).value.trim()
+
+        },
+
+
+        player3: {
+
+          name:
+            document.getElementById(
+              "player3Name"
+            ).value.trim(),
+
+          uid:
+            document.getElementById(
+              "player3Uid"
+            ).value.trim(),
+
+          ign:
+            document.getElementById(
+              "player3Ign"
+            ).value.trim()
+
+        },
+
+
+        player4: {
+
+          name:
+            document.getElementById(
+              "player4Name"
+            ).value.trim(),
+
+          uid:
+            document.getElementById(
+              "player4Uid"
+            ).value.trim(),
+
+          ign:
+            document.getElementById(
+              "player4Ign"
+            ).value.trim()
+
+        },
+
+
+        phone:
+          document.getElementById(
+            "phone"
+          ).value.trim(),
+
+        registeredAt:
+          new Date().toISOString()
+
+      };
+
+
+    }else{
+
+      /* SOLO */
+
+      data = {
+
+        registrationType:
+          "Solo",
+
+        player: {
+
+          name:
+            document.getElementById(
+              "soloName"
+            ).value.trim(),
+
+          uid:
+            document.getElementById(
+              "soloUid"
+            ).value.trim(),
+
+          ign:
+            document.getElementById(
+              "soloIgn"
+            ).value.trim()
+
+        },
+
+
+        phone:
+          document.getElementById(
+            "phone"
+          ).value.trim(),
+
+        registeredAt:
+          new Date().toISOString()
+
+      };
+
+    }
+
+
+    /* SAVE */
+
+    const registrationsRef =
+      ref(
+        database,
+        "registrations"
+      );
+
+
+    const newRegistration =
+      push(registrationsRef);
+
+
+    await set(
+      newRegistration,
+      data
+    );
+
+
+    /* PAYMENT */
+
+    window.location.href =
+      "payment.html";
+
+
+  }catch(error){
+
+    console.error(error);
+
+
+    message.className =
+      "message error";
+
+
+    message.textContent =
+      "❌ Registration failed. Check Firebase.";
+
+
+    button.disabled = false;
+
+    button.textContent =
+      "CONTINUE TO PAYMENT";
+
+  }
+
+});
+
+</script>
+
+</body>
+</html>
